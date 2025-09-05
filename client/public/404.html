@@ -7,7 +7,6 @@
     <script>
         // GitHub PagesでSPAのルーティングを処理するためのリダイレクト
         // 404エラーが発生した場合、ルートパスにリダイレクトしてSPAに処理を委ねる
-        var pathSegmentsToKeep = 1;
         var l = window.location;
         
         // リポジトリ名を除いたパスを取得
@@ -17,11 +16,9 @@
         // リポジトリパスを除いた部分を取得
         var relativePath = currentPath.replace(repoPath, '') || '/';
         
-        // クエリパラメータとしてパスを渡す
+        // hashルーティングを使用してリダイレクト
         var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + 
-                         repoPath + '/?/' + relativePath.slice(1).replace(/&/g, '~and~') +
-                         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-                         l.hash;
+                         repoPath + '/#' + relativePath;
         
         // リダイレクト実行
         l.replace(redirectUrl);
