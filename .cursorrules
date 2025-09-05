@@ -1,0 +1,64 @@
+# Cursor設定ファイル
+
+## エディタ設定
+
+### TypeScript設定
+- 厳密な型チェック有効
+- パスマッピング設定済み
+- 未使用変数・パラメータの警告
+
+### ESLint設定
+- React/TypeScript対応
+- コード品質ルール適用
+- Prettierとの統合
+
+### Prettier設定
+- セミコロン必須
+- ダブルクォート使用
+- 行幅80文字
+- タブ幅2スペース
+
+## 推奨拡張機能
+
+### 必須
+- TypeScript Importer
+- ESLint
+- Prettier
+- Tailwind CSS IntelliSense
+
+### 推奨
+- Auto Rename Tag
+- Bracket Pair Colorizer
+- GitLens
+- Error Lens
+
+## キーボードショートカット
+
+### 開発効率化
+- `Ctrl+Shift+P`: コマンドパレット
+- `Ctrl+P`: ファイル検索
+- `Ctrl+Shift+F`: 全体検索
+- `F12`: 定義へジャンプ
+
+### コード編集
+- `Alt+Shift+F`: フォーマット
+- `Ctrl+Shift+L`: 選択範囲のフォーマット
+- `Ctrl+/`: コメント切り替え
+- `Ctrl+D`: 次の一致を選択
+
+## プロジェクト固有設定
+
+### パスマッピング
+```json
+{
+  "@/*": ["./client/src/*"],
+  "@shared/*": ["./shared/*"]
+}
+```
+
+### 除外ファイル
+- `node_modules/`
+- `dist/`
+- `build/`
+- `*.config.js`
+- `*.config.ts`

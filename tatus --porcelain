@@ -1,0 +1,13 @@
+client/src/App.tsx
+client/src/components/layout/navigation.tsx
+client/src/components/sections/features.tsx
+client/src/components/sections/hero.tsx
+client/src/components/ui/button.tsx
+client/src/components/ui/card.tsx
+client/src/index.css
+package-lock.json
+package.json
+replit.md
+server/vite.ts
+tsconfig.json
+vite.config.ts

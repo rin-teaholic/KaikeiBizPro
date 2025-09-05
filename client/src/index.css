@@ -83,4 +83,119 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* アニメーション用クラス */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* 遅延付きアニメーション */
+  .animate-on-scroll.delay-200 {
+    transition-delay: 0.2s;
+  }
+  
+  .animate-on-scroll.delay-400 {
+    transition-delay: 0.4s;
+  }
+  
+  .animate-on-scroll.delay-600 {
+    transition-delay: 0.6s;
+  }
+  
+  .animate-on-scroll.delay-800 {
+    transition-delay: 0.8s;
+  }
+  
+  .animate-on-scroll.delay-1000 {
+    transition-delay: 1s;
+  }
+  
+  /* カード用のアニメーション */
+  .animate-on-scroll.card-animate {
+    opacity: 0;
+    transform: translateY(3rem);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-on-scroll.card-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* カード用の遅延 */
+  .animate-on-scroll.card-animate.delay-600 {
+    transition-delay: 0.6s;
+  }
+  
+  .animate-on-scroll.card-animate.delay-800 {
+    transition-delay: 0.8s;
+  }
+  
+  .animate-on-scroll.card-animate.delay-1000 {
+    transition-delay: 1s;
+  }
+  
+  /* 追加のアニメーション効果 */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  /* カスタムアニメーション */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+    to { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  /* パフォーマンス最適化 */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  /* スムーズスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* アニメーション無効化の設定 */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
