@@ -9,13 +9,22 @@
         // 404エラーが発生した場合、ルートパスにリダイレクトしてSPAに処理を委ねる
         var pathSegmentsToKeep = 1;
         var l = window.location;
-        l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash
-        );
+        
+        // リポジトリ名を除いたパスを取得
+        var repoPath = '/KaikeiBizPro';
+        var currentPath = l.pathname;
+        
+        // リポジトリパスを除いた部分を取得
+        var relativePath = currentPath.replace(repoPath, '') || '/';
+        
+        // クエリパラメータとしてパスを渡す
+        var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + 
+                         repoPath + '/?/' + relativePath.slice(1).replace(/&/g, '~and~') +
+                         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+                         l.hash;
+        
+        // リダイレクト実行
+        l.replace(redirectUrl);
     </script>
 </head>
 <body>

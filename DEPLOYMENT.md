@@ -36,6 +36,7 @@
 - `vite.config.ts`: `base` パスが設定済み
 - `package.json`: `build:gh-pages` スクリプトが追加済み
 - `.github/workflows/deploy.yml`: GitHub Actionsワークフローが作成済み
+- `client/src/main.tsx`: wouterのhashルーティング設定済み
 
 ### 4. デプロイの実行
 
@@ -54,6 +55,7 @@
 
 - デプロイされたサイトが正常に表示されることを確認
 - すべてのリンクと機能が正しく動作することを確認
+- ページのリロードや直接URLアクセスが正常に動作することを確認
 
 ## トラブルシューティング
 
@@ -62,6 +64,8 @@
 1. **404エラーが発生する場合**
    - `vite.config.ts` の `base` パスが正しく設定されているか確認
    - リポジトリ名とパスが一致しているか確認
+   - `client/src/main.tsx` でhashルーティングが設定されているか確認
+   - `client/public/404.html` が存在し、正しく設定されているか確認
 
 2. **ビルドが失敗する場合**
    - GitHub Actionsのログを確認
@@ -71,6 +75,10 @@
    - Tailwind CSSのビルドが正しく実行されているか確認
    - 静的ファイルのパスが正しいか確認
 
+4. **ルーティングが正しく動作しない場合**
+   - `client/src/main.tsx` のhashルーティング設定を確認
+   - `client/public/404.html` のリダイレクト設定を確認
+
 ### カスタムドメインの設定
 
 カスタムドメインを使用する場合：
@@ -78,9 +86,11 @@
 1. GitHub Pagesの設定で **Custom domain** を設定
 2. DNS設定でCNAMEレコードを追加
 3. `vite.config.ts` の `base` パスを `/` に変更
+4. `client/src/main.tsx` のルーティング設定をhistoryモードに変更
 
 ## 参考リンク
 
 - [GitHub Pages公式ドキュメント](https://docs.github.com/ja/pages)
 - [Vite GitHub Pages設定](https://vitejs.dev/guide/static-deploy.html#github-pages)
 - [GitHub Actions公式ドキュメント](https://docs.github.com/ja/actions)
+- [wouterルーティングライブラリ](https://github.com/molefrog/wouter)

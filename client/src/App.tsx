@@ -8,30 +8,24 @@ import { pageVariants } from "@/lib/animations";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 
-function Router() {
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        initial="initial"
-        animate="in"
-        exit="out"
-        variants={pageVariants}
-      >
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route component={NotFound} />
-        </Switch>
-      </motion.div>
-    </AnimatePresence>
-  );
-}
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        <AnimatePresence mode="wait">
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+          >
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route component={NotFound} />
+            </Switch>
+          </motion.div>
+        </AnimatePresence>
       </TooltipProvider>
     </QueryClientProvider>
   );
