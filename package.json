@@ -4,6 +4,7 @@
   "description": "KaikeiBiz Pro - Cursor版 - 中小企業向けクラウド会計ソフトウェア",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://rin-teaholic.github.io/KaikeiBizPro",
   "scripts": {
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--experimental-loader tsx/esm\" tsx server/index.ts",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
