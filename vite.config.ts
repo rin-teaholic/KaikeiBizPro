@@ -26,7 +26,6 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
   },
-  base: process.env.NODE_ENV === 'production' || process.env.VITE_BUILD === 'true' ? '/KaikeiBizPro/' : '/',
   server: {
     fs: {
       strict: true,
