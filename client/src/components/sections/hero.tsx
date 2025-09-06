@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Play, Download } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { scrollToSection } from "@/lib/utils";
 import { 
   fadeInUp, 
   scaleIn, 
@@ -20,12 +21,6 @@ const Hero = () => {
     margin: "0px 0px -50px 0px"
   });
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section ref={heroRef} className="gradient-bg pt-24 pb-16 relative overflow-hidden">

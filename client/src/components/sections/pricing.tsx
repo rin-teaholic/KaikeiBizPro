@@ -1,16 +1,10 @@
 import { Building, TrendingUp, Crown, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { scrollToSection } from "@/lib/utils";
 
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const handlePlanSelect = (planIndex: number) => {
     setSelectedPlan(planIndex);

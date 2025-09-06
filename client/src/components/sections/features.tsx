@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { scrollToSection } from "@/lib/utils";
 import { 
   fadeInUp, 
   fadeInLeft, 
@@ -19,12 +20,6 @@ const Features = () => {
     margin: "0px 0px -50px 0px"
   });
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="features" className="py-16 bg-background" ref={featuresRef}>

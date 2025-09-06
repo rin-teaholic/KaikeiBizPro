@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Calculator, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, scrollToSection } from "@/lib/utils";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,12 +18,9 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+  const handleScrollToSection = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -58,7 +55,7 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-6">
             <motion.button 
-              onClick={() => scrollToSection("features")}
+              onClick={() => handleScrollToSection("features")}
               className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-features"
               whileHover={{ scale: 1.05 }}
@@ -68,7 +65,7 @@ const Navigation = () => {
               機能
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection("case-studies")}
+              onClick={() => handleScrollToSection("case-studies")}
               className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-case-studies"
               whileHover={{ scale: 1.05 }}
@@ -78,7 +75,7 @@ const Navigation = () => {
               導入事例
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection("pricing")}
+              onClick={() => handleScrollToSection("pricing")}
               className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-pricing"
               whileHover={{ scale: 1.05 }}
@@ -88,7 +85,7 @@ const Navigation = () => {
               料金
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection("faq")}
+              onClick={() => handleScrollToSection("faq")}
               className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-faq"
               whileHover={{ scale: 1.05 }}
@@ -103,7 +100,7 @@ const Navigation = () => {
               transition={{ duration: 0.2 }}
             >
               <Button 
-                onClick={() => scrollToSection("contact")}
+                onClick={() => handleScrollToSection("contact")}
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
                 data-testid="nav-contact-cta"
                 enableAnimation={false}
@@ -152,7 +149,7 @@ const Navigation = () => {
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
               <motion.button 
-                onClick={() => scrollToSection("features")}
+                onClick={() => handleScrollToSection("features")}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-features"
                 initial={{ x: -20, opacity: 0 }}
@@ -164,7 +161,7 @@ const Navigation = () => {
                 機能
               </motion.button>
               <motion.button 
-                onClick={() => scrollToSection("case-studies")}
+                onClick={() => handleScrollToSection("case-studies")}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-case-studies"
                 initial={{ x: -20, opacity: 0 }}
@@ -176,7 +173,7 @@ const Navigation = () => {
                 導入事例
               </motion.button>
               <motion.button 
-                onClick={() => scrollToSection("pricing")}
+                onClick={() => handleScrollToSection("pricing")}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-pricing"
                 initial={{ x: -20, opacity: 0 }}
@@ -188,7 +185,7 @@ const Navigation = () => {
                 料金
               </motion.button>
               <motion.button 
-                onClick={() => scrollToSection("faq")}
+                onClick={() => handleScrollToSection("faq")}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-faq"
                 initial={{ x: -20, opacity: 0 }}
@@ -207,7 +204,7 @@ const Navigation = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button 
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => handleScrollToSection("contact")}
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   data-testid="mobile-nav-contact-cta"
                   enableAnimation={false}
