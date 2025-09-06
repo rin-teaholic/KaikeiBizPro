@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Test - KaikeiBiz Pro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .icon-test {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .icon-test img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Favicon Test Page</h1>
+    <p>このページでファビコンの読み込み状況を確認できます。</p>
+
+    <div class="test-section">
+        <h2>📱 iOS Chrome用アイコン</h2>
+        <div class="icon-test">
+            <img src="/apple-touch-icon.png" alt="Apple Touch Icon" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Apple Touch Icon (180x180)</span>
+        </div>
+        <div class="icon-test">
+            <img src="/favicon-32x32.png" alt="Favicon 32x32" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Favicon 32x32</span>
+        </div>
+        <div class="icon-test">
+            <img src="/favicon-16x16.png" alt="Favicon 16x16" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Favicon 16x16</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 SVGアイコン</h2>
+        <div class="icon-test">
+            <img src="/favicon.svg" alt="Favicon SVG" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Favicon SVG</span>
+        </div>
+        <div class="icon-test">
+            <img src="/icon-192.svg" alt="Icon 192x192" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Icon 192x192 SVG</span>
+        </div>
+        <div class="icon-test">
+            <img src="/icon-512.svg" alt="Icon 512x512" onerror="this.style.display='none'; this.nextElementSibling.className='status error'; this.nextElementSibling.textContent='❌ 読み込み失敗';">
+            <span class="status info">Icon 512x512 SVG</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 ブラウザ情報</h2>
+        <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+        <p><strong>プラットフォーム:</strong> <span id="platform"></span></p>
+        <p><strong>ブラウザ:</strong> <span id="browser"></span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>💡 確認手順</h2>
+        <ol>
+            <li>このページをiPhoneのChromeで開く</li>
+            <li>タブにアイコンが表示されているか確認</li>
+            <li>上記のアイコンテストで読み込み状況を確認</li>
+            <li>キャッシュをクリアして再確認</li>
+        </ol>
+    </div>
+
+    <script>
+        // ブラウザ情報を表示
+        document.getElementById('userAgent').textContent = navigator.userAgent;
+        document.getElementById('platform').textContent = navigator.platform;
+        
+        // ブラウザ判定
+        const userAgent = navigator.userAgent;
+        let browser = 'Unknown';
+        if (userAgent.includes('Chrome') && userAgent.includes('Safari')) {
+            browser = 'Chrome';
+        } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+            browser = 'Safari';
+        } else if (userAgent.includes('Firefox')) {
+            browser = 'Firefox';
+        }
+        document.getElementById('browser').textContent = browser;
+        
+        // アイコンの読み込み状況を確認
+        document.querySelectorAll('.icon-test img').forEach(img => {
+            img.onload = function() {
+                this.nextElementSibling.className = 'status success';
+                this.nextElementSibling.textContent = '✅ 読み込み成功';
+            };
+        });
+    </script>
+</body>
+</html>
