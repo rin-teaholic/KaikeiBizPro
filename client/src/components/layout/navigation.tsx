@@ -19,8 +19,13 @@ const Navigation = () => {
   }, []);
 
   const handleScrollToSection = (sectionId: string) => {
-    scrollToSection(sectionId);
+    // モバイルメニューを閉じる
     setIsMobileMenuOpen(false);
+    
+    // 少し遅延してスクロールを実行（モバイルメニューのアニメーション完了を待つ）
+    setTimeout(() => {
+      scrollToSection(sectionId);
+    }, 100);
   };
 
   return (

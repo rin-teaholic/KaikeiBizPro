@@ -108,7 +108,7 @@ const Contact = () => {
               内容を確認の上、1営業日以内に担当よりご連絡いたします。
             </p>
           </div>
-          <div className="bg-card rounded-2xl p-8 shadow-sm">
+          <div className="bg-card rounded-2xl p-8 shadow-sm" tabIndex={-1}>
             {/* バリデーション状態の表示 */}
             {form.formState.errors && Object.keys(form.formState.errors).length > 0 && (
               <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">

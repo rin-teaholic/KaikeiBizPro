@@ -187,6 +187,25 @@
     scroll-behavior: smooth;
   }
   
+  /* スクロール問題の修正 */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* フォーカス時のスクロール問題を防ぐ */
+  *:focus {
+    outline: none;
+  }
+  
+  /* フォーム要素のフォーカス時のスクロール問題を防ぐ */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid hsl(214, 84%, 56%);
+    outline-offset: 2px;
+  }
+  
   /* アニメーション無効化の設定 */
   @media (prefers-reduced-motion: reduce) {
     *,

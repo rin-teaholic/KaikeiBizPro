@@ -16,9 +16,21 @@ export function scrollToSection(sectionId: string, headerHeight: number = 80) {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
+    // スクロール前にフォーカスを解除
+    if (document.activeElement && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth"
     });
+
+    // スクロール完了後にフォーカスを解除（念のため）
+    setTimeout(() => {
+      if (document.activeElement && document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    }, 1000);
   }
 }
