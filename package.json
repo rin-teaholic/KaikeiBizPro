@@ -1,7 +1,7 @@
 {
   "name": "kaikei-biz-pro-cursor",
   "version": "1.0.0",
-  "description": "KaikeiBiz Pro - Cursor版 - 中小企業向けクラウド会計ソフトウェア",
+  "description": "KaikeiBiz Pro 中小企業向けクラウド会計ソフトウェア",
   "type": "module",
   "license": "MIT",
   "homepage": "https://rin-teaholic.github.io/KaikeiBizPro",
@@ -120,10 +120,9 @@
     "react",
     "typescript",
     "express",
-    "postgresql",
-    "cursor"
+    "postgresql"
   ],
-  "author": "KaikeiBiz Pro Team",
+  "author": "Rin",
   "repository": {
     "type": "git",
     "url": "https://github.com/rin-teaholic/KaikeiBizPro.git"
