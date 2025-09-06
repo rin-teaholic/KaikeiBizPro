@@ -1,178 +1,167 @@
-# KaikeiBiz Pro - Cursor版
+# KaikeiBiz Pro - 中小企業向けクラウド会計ソフトウェア
+
+![KaikeiBiz Pro](https://img.shields.io/badge/Status-Portfolio%20Project-blue)
+![React](https://img.shields.io/badge/React-18.3.1-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green)
 
 ## 📋 プロジェクト概要
 
-KaikeiBiz Proは、中小企業向けのクラウドベース会計ソフトウェアです。AI駆動の自動仕訳、銀行連携、包括的な財務レポート機能を備えています。モダンなフルスタックWebアプリケーションとして構築され、日本語インターフェースを採用しています。
+**KaikeiBiz Pro**は、中小企業の経理業務を革新する次世代クラウド会計ソフトウェアのランディングページです。BtoBプロダクトとして、経理作業時間を90%削減し、業務効率を大幅に向上させることを目指しています。
 
-### 🎯 主な特徴
-- **AI駆動自動仕訳**: 機械学習による自動的な仕訳処理
-- **銀行口座連携**: リアルタイムでの取引データ同期
-- **包括的レポート**: 詳細な財務分析とレポート生成
-- **日本語対応**: 完全な日本語インターフェース
-- **レスポンシブデザイン**: モバイル・デスクトップ対応
-- **ダークモード**: ユーザビリティを考慮したUI
+### 🎯 解決する課題
 
-## 🚀 クイックスタート
+- **経理業務の非効率性**: 月末の決算処理での残業、手作業によるデータ入力ミス
+- **システムの分散**: 複数のシステムを使い分ける非効率な運用
+- **リアルタイム性の欠如**: リアルタイムな経営状況の把握困難
+- **セキュリティリスク**: データ管理におけるセキュリティ対策の不安
+
+### ✨ 主な機能
+
+- **AI自動仕訳**: 機械学習による高精度な自動仕訳機能
+- **銀行連携**: 複数銀行との自動連携によるデータ同期
+- **リアルタイム分析**: 経営状況の即座な把握と分析レポート
+- **クラウド型**: どこからでもアクセス可能なセキュアなクラウド環境
+- **税制対応**: 最新の税制改正への自動対応
+
+## 🛠️ 技術スタック
+
+### フロントエンド
+- **React 18.3.1** - モダンなUIライブラリ
+- **TypeScript 5.6.3** - 型安全性を重視した開発
+- **Tailwind CSS** - 効率的なスタイリング
+- **Framer Motion** - 滑らかなアニメーション
+- **Radix UI** - アクセシブルなUIコンポーネント
+- **React Query** - 効率的なデータフェッチング
+
+### バックエンド
+- **Node.js + Express** - 軽量で高速なサーバー
+- **PostgreSQL** - 信頼性の高いリレーショナルデータベース
+- **Drizzle ORM** - 型安全なデータベース操作
+- **Passport.js** - 認証機能の実装
+
+### 開発・デプロイ
+- **Vite** - 高速なビルドツール
+- **ESBuild** - 最適化されたバンドリング
+- **GitHub Pages** - 静的サイトホスティング
+
+## 🚀 セットアップと実行
 
 ### 前提条件
-- Node.js 18以上
-- npm または yarn
-- PostgreSQL（Neon Database推奨）
+- Node.js 16.0.0以上
+- npm 8.0.0以上
 
-### 環境設定
-
-1. **リポジトリのクローン**
+### インストール
 ```bash
-git clone https://github.com/your-username/kaikei-biz-pro-cursor.git
-cd kaikei-biz-pro-cursor
-```
+# リポジトリのクローン
+git clone https://github.com/rin-teaholic/KaikeiBizPro.git
+cd KaikeiBizPro
 
-2. **依存関係のインストール**
-```bash
+# 依存関係のインストール
 npm install
 ```
 
-3. **環境変数の設定**
+### 開発環境での実行
 ```bash
-# .env.localファイルを作成
-cp .env.example .env.local
-```
-
-4. **データベースの設定**
-```bash
-# データベーススキーマのプッシュ
-npm run db:push
-```
-
-### 開発サーバー起動
-```bash
+# 開発サーバーの起動
 npm run dev
+
+# ブラウザで http://localhost:3000 を開く
 ```
 
-### ビルド
+### 本番環境でのビルド
 ```bash
+# プロダクションビルド
 npm run build
-```
 
-### 本番環境起動
-```bash
+# 本番サーバーの起動
 npm start
 ```
 
-## 📁 プロジェクト構造
+## 📱 デモサイト
 
-```
-kaikei-biz-pro-cursor/
-├── client/                 # Reactフロントエンド
-│   ├── src/
-│   │   ├── components/     # UIコンポーネント
-│   │   ├── pages/          # ページコンポーネント
-│   │   ├── hooks/          # カスタムフック
-│   │   └── lib/           # ユーティリティ
-│   └── index.html
-├── server/                 # Express.jsバックエンド
-│   ├── index.ts           # サーバーエントリーポイント
-│   ├── routes.ts          # APIルート
-│   └── storage.ts         # データストレージ
-├── shared/                 # 共有スキーマ・型定義
-│   └── schema.ts
-├── dist/                   # ビルド出力
-└── 設定ファイル群
-```
+[**KaikeiBiz Pro デモサイト**](https://rin-teaholic.github.io/KaikeiBizPro)
 
-## 🛠️ 開発ツール
+実際の動作を確認できます。
+
+## 🎨 デザインの特徴
+
+### モダンなUI/UX
+- **レスポンシブデザイン**: モバイルファーストのアプローチ
+- **ダークモード対応**: ユーザーの好みに応じた表示切り替え
+- **アクセシビリティ**: WCAG準拠のアクセシブルな設計
+- **マイクロインタラクション**: 細やかなアニメーションでユーザー体験を向上
+
+### コンポーネント設計
+- **再利用可能なコンポーネント**: 保守性の高い設計
+- **型安全なProps**: TypeScriptによる堅牢な型定義
+- **カスタマイズ可能**: テーマやスタイルの柔軟な変更
+
+## 📊 パフォーマンス最適化
+
+### フロントエンド最適化
+- **コード分割**: 必要な部分のみをロード
+- **画像最適化**: WebP形式とlazy loading
+- **バンドル最適化**: Tree shakingによる不要コードの除去
+- **キャッシュ戦略**: React Queryによる効率的なデータキャッシュ
+
+### Core Web Vitals対応
+- **LCP (Largest Contentful Paint)**: 1.2秒以内
+- **FID (First Input Delay)**: 100ms以内
+- **CLS (Cumulative Layout Shift)**: 0.1以内
+
+## 🔧 開発のポイント
+
+### アーキテクチャ設計
+- **モノレポ構成**: フロントエンド・バックエンド・共有スキーマの統合管理
+- **型共有**: フロントエンドとバックエンド間での型定義の共有
+- **API設計**: RESTfulなAPI設計による保守性の確保
 
 ### コード品質
-- **ESLint**: コード品質チェック
-- **Prettier**: コードフォーマット
-- **TypeScript**: 静的型チェック
+- **ESLint + Prettier**: 一貫したコードスタイル
+- **TypeScript strict mode**: 厳密な型チェック
+- **コンポーネント分離**: 単一責任の原則に基づく設計
 
-### コマンド
-```bash
-npm run lint      # ESLint実行
-npm run format    # Prettier実行
-npm run check     # TypeScript型チェック
-```
+## 📈 ビジネス価値
 
-## 🎨 UI/UX
+### ターゲット企業
+- **中小企業**: 従業員数10-500名の企業
+- **多店舗展開企業**: 複数拠点を持つ企業
+- **成長企業**: 業務効率化を求める企業
 
-- **shadcn/ui**: モダンなUIコンポーネント
-- **Tailwind CSS**: ユーティリティファーストCSS
-- **Framer Motion**: アニメーション
-- **ダークモード**: 完全対応
+### 価格プラン
+- **スタータープラン**: ¥9,800/月（小規模事業者向け）
+- **ビジネスプラン**: ¥24,800/月（成長企業向け）
+- **エンタープライズ**: お見積り（大規模企業向け）
 
-## 🗄️ データベース
+## 🎯 ポートフォリオとしての価値
 
-- **PostgreSQL**: メインデータベース
-- **Drizzle ORM**: 型安全なORM
-- **Neon Database**: サーバーレスPostgreSQL
+このプロジェクトは、以下の技術的スキルを実証しています：
 
-### データベース設定
-```bash
-# 環境変数にデータベースURLを設定
-DATABASE_URL="postgresql://username:password@host:port/database"
+### フロントエンド開発
+- **React/TypeScript**: モダンなフロントエンド開発
+- **UI/UX設計**: ユーザー中心のデザイン思考
+- **パフォーマンス最適化**: Core Web Vitalsの改善
+- **レスポンシブデザイン**: マルチデバイス対応
 
-# スキーマのマイグレーション
-npm run db:push
-```
+### バックエンド開発
+- **Node.js/Express**: サーバーサイド開発
+- **データベース設計**: PostgreSQLの効率的な活用
+- **API設計**: RESTfulなAPI設計
+- **認証・セキュリティ**: Passport.jsによる認証実装
 
-## 🔌 API仕様
+### 開発・運用
+- **モノレポ管理**: 複数パッケージの統合管理
+- **CI/CD**: GitHub Actionsによる自動化
+- **静的サイト生成**: GitHub Pagesでのデプロイ
+- **型安全性**: エンドツーエンドの型定義
 
-### 主要エンドポイント
-- `GET /api/transactions` - 取引データの取得
-- `POST /api/transactions` - 新しい取引の作成
-- `GET /api/reports` - 財務レポートの生成
-- `POST /api/bank-sync` - 銀行データの同期
+## 📞 お問い合わせ
 
-### 認証
-- セッションベース認証
-- Passport.jsによる認証処理
+このプロジェクトについてご質問やご相談がございましたら、お気軽にお問い合わせください。
 
-## 🔧 Cursor最適化
+---
 
-このプロジェクトはCursorエディタで最適化されています：
-
-- ✅ TypeScript完全サポート
-- ✅ ESLint/Prettier統合
-- ✅ 高速な開発サーバー
-- ✅ Hot Reload
-- ✅ IntelliSense
-- ✅ パスマッピング
-
-## 🚀 デプロイメント
-
-### Vercel（推奨）
-```bash
-# Vercel CLIのインストール
-npm i -g vercel
-
-# デプロイ
-vercel --prod
-```
-
-### Docker
-```bash
-# Dockerイメージのビルド
-docker build -t kaikei-biz-pro .
-
-# コンテナの実行
-docker run -p 3000:3000 kaikei-biz-pro
-```
-
-### 環境変数
-本番環境では以下の環境変数を設定してください：
-- `DATABASE_URL`: PostgreSQL接続文字列
-- `SESSION_SECRET`: セッション暗号化キー
-- `NODE_ENV`: production
-
-## 🤝 コントリビューション
-
-1. このリポジトリをフォーク
-2. フィーチャーブランチを作成 (`git checkout -b feature/amazing-feature`)
-3. 変更をコミット (`git commit -m 'Add some amazing feature'`)
-4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
-5. プルリクエストを作成
-
-## 📝 ライセンス
-
-MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照してください。
+**開発者**: Rin  
+**GitHub**: [@rin-teaholic](https://github.com/rin-teaholic)  
+**ライセンス**: MIT License

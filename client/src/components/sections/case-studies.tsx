@@ -45,9 +45,9 @@ const CaseStudies = () => {
                   {study.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
-                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
                     >
-                      {tag}
+                      #{tag}
                     </span>
                   ))}
                 </div>

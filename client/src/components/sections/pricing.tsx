@@ -1,12 +1,19 @@
 import { Building, TrendingUp, Crown, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Pricing = () => {
+  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handlePlanSelect = (planIndex: number) => {
+    setSelectedPlan(planIndex);
   };
 
   const plans = [
@@ -75,15 +82,27 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`bg-card rounded-xl p-8 shadow-sm relative ${
+              className={`bg-card rounded-xl p-8 shadow-sm relative cursor-pointer transition-all duration-200 hover:shadow-md ${
                 plan.popular ? "border-2 border-primary shadow-lg" : "border border-border"
+              } ${
+                selectedPlan === index 
+                  ? "ring-2 ring-orange-500 ring-offset-2 bg-orange-50 border-orange-300" 
+                  : ""
               }`}
+              onClick={() => handlePlanSelect(index)}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold">
                     人気No.1
                   </span>
+                </div>
+              )}
+              {selectedPlan === index && (
+                <div className="absolute -top-2 -right-2">
+                  <div className="bg-orange-500 text-white rounded-full p-2 shadow-lg">
+                    <Check className="h-4 w-4" />
+                  </div>
                 </div>
               )}
               <div className="text-center mb-6">
@@ -110,14 +129,40 @@ const Pricing = () => {
                     ? "bg-primary text-primary-foreground hover:bg-primary/90" 
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 }`}
-                onClick={() => scrollToSection("contact")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (selectedPlan === index) {
+                    scrollToSection("contact");
+                  } else {
+                    handlePlanSelect(index);
+                  }
+                }}
                 data-testid={`pricing-${plan.name.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                {plan.buttonText}
+                {selectedPlan === index ? "このプランを選択済み" : plan.buttonText}
               </Button>
             </div>
           ))}
         </div>
+        
+        {selectedPlan !== null && (
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 text-center">
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                ✅ {plans[selectedPlan].name} を選択しました
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                {plans[selectedPlan].description} - {plans[selectedPlan].price}{plans[selectedPlan].period}
+              </p>
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                今すぐ申し込む
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

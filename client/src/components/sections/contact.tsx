@@ -13,6 +13,28 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
 
 const contactFormSchema = insertContactSubmissionSchema.extend({
+  company: z.string()
+    .min(1, "企業名は必須です")
+    .min(2, "企業名は2文字以上で入力してください")
+    .max(100, "企業名は100文字以内で入力してください"),
+  name: z.string()
+    .min(1, "ご担当者名は必須です")
+    .min(2, "ご担当者名は2文字以上で入力してください")
+    .max(50, "ご担当者名は50文字以内で入力してください")
+    .regex(/^[^\d]*$/, "ご担当者名に数字は含められません"),
+  phone: z.string()
+    .min(1, "電話番号は必須です")
+    .regex(/^[\d\-\(\)\s]+$/, "電話番号は数字、ハイフン、括弧、スペースのみ使用できます")
+    .min(10, "電話番号は10桁以上で入力してください")
+    .max(15, "電話番号は15桁以内で入力してください"),
+  email: z.string()
+    .min(1, "メールアドレスは必須です")
+    .email("正しいメールアドレス形式で入力してください")
+    .max(255, "メールアドレスは255文字以内で入力してください"),
+  inquiryType: z.string().optional(),
+  employees: z.string().optional(),
+  message: z.string()
+    .max(1000, "メッセージは1000文字以内で入力してください"),
   agreement: z.boolean().refine(val => val === true, {
     message: "利用規約・プライバシーポリシーに同意してください"
   })
@@ -25,6 +47,8 @@ const Contact = () => {
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
+    mode: "onBlur", // フィールドからフォーカスが外れた時にバリデーション
+    reValidateMode: "onChange", // 入力中にリアルタイムでバリデーション
     defaultValues: {
       company: "",
       name: "",
@@ -64,6 +88,15 @@ const Contact = () => {
     contactMutation.mutate(submitData);
   };
 
+  const onError = (errors: any) => {
+    console.log("Validation errors:", errors);
+    toast({
+      title: "入力エラー",
+      description: "入力内容を確認してください。",
+      variant: "destructive",
+    });
+  };
+
   return (
     <section id="contact" className="py-16 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -76,8 +109,15 @@ const Contact = () => {
             </p>
           </div>
           <div className="bg-card rounded-2xl p-8 shadow-sm">
+            {/* バリデーション状態の表示 */}
+            {form.formState.errors && Object.keys(form.formState.errors).length > 0 && (
+              <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+                <p className="text-destructive font-semibold">入力内容にエラーがあります</p>
+              </div>
+            )}
+            
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
@@ -115,7 +155,32 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>電話番号 <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
-                          <Input placeholder="03-1234-5678" {...field} data-testid="input-phone" />
+                          <Input 
+                            placeholder="03-1234-5678" 
+                            {...field} 
+                            data-testid="input-phone"
+                            onChange={(e) => {
+                              // 数字のみを抽出してフォーマット
+                              const value = e.target.value.replace(/[^\d]/g, '');
+                              let formatted = value;
+                              
+                              if (value.length >= 10) {
+                                if (value.startsWith('0')) {
+                                  // 固定電話のフォーマット
+                                  if (value.length === 10) {
+                                    formatted = `${value.slice(0, 2)}-${value.slice(2, 6)}-${value.slice(6)}`;
+                                  } else if (value.length === 11) {
+                                    formatted = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7)}`;
+                                  }
+                                } else if (value.startsWith('1')) {
+                                  // 携帯電話のフォーマット
+                                  formatted = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7)}`;
+                                }
+                              }
+                              
+                              field.onChange(formatted);
+                            }}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -200,7 +265,12 @@ const Contact = () => {
                           data-testid="textarea-message"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <div className="flex justify-between items-center">
+                        <FormMessage />
+                        <span className="text-sm text-muted-foreground">
+                          {field.value?.length || 0}/1000文字
+                        </span>
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -232,7 +302,7 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-bold text-lg hover:bg-primary/90 transition-colors"
-                  disabled={contactMutation.isPending}
+                  disabled={contactMutation.isPending || !form.formState.isValid}
                   data-testid="button-submit"
                 >
                   {contactMutation.isPending ? "送信中..." : "送信する"}

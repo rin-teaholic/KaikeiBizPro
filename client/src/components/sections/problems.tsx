@@ -52,14 +52,7 @@ const Problems = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="text-center mt-12">
-          <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
-            alt="経理業務で悩むビジネスマン" 
-            className="rounded-xl mx-auto max-w-md"
-          />
-        </div>
+        </div>        
       </div>
     </section>
   );

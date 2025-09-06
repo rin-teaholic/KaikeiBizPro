@@ -44,23 +44,47 @@ const FAQ = () => {
         </div>
         <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-card rounded-xl p-6 shadow-sm">
+            <div 
+              key={index} 
+              className={`bg-card rounded-xl shadow-sm transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] ${
+                openItems.includes(index) 
+                  ? 'ring-2 ring-primary/20 shadow-lg' 
+                  : 'hover:ring-1 hover:ring-primary/10'
+              }`}
+            >
               <Collapsible open={openItems.includes(index)} onOpenChange={() => toggleItem(index)}>
                 <CollapsibleTrigger 
-                  className="flex items-center justify-between w-full text-left group"
+                  className="flex items-center justify-between w-full text-left group p-6 hover:bg-muted/30 transition-colors duration-200 rounded-xl"
                   data-testid={`faq-question-${index}`}
                 >
-                  <h3 className="text-lg font-bold text-foreground pr-4">{faq.question}</h3>
+                  <h3 className="text-lg font-bold text-foreground pr-4 group-hover:text-primary transition-colors duration-200">
+                    {faq.question}
+                  </h3>
                   <ChevronDown 
-                    className={`text-muted-foreground transition-transform flex-shrink-0 ${
-                      openItems.includes(index) ? 'rotate-180' : ''
+                    className={`text-muted-foreground transition-all duration-300 ease-in-out flex-shrink-0 group-hover:text-primary ${
+                      openItems.includes(index) 
+                        ? 'rotate-180 scale-110' 
+                        : 'rotate-0 scale-100'
                     }`}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="mt-4">
-                  <p className="text-muted-foreground" data-testid={`faq-answer-${index}`}>
-                    {faq.answer}
-                  </p>
+                <CollapsibleContent className="overflow-hidden">
+                  <div className="px-6 pb-6">
+                    <div 
+                      className={`text-muted-foreground transition-all duration-500 ease-in-out ${
+                        openItems.includes(index) 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 -translate-y-2'
+                      }`}
+                      data-testid={`faq-answer-${index}`}
+                    >
+                      <div className="pt-2 border-t border-border/50">
+                        <p className="mt-4 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </CollapsibleContent>
               </Collapsible>
             </div>

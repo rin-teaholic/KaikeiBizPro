@@ -57,7 +57,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-6">
             <motion.button 
               onClick={() => scrollToSection("features")}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-features"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -67,7 +67,7 @@ const Navigation = () => {
             </motion.button>
             <motion.button 
               onClick={() => scrollToSection("case-studies")}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-case-studies"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -77,7 +77,7 @@ const Navigation = () => {
             </motion.button>
             <motion.button 
               onClick={() => scrollToSection("pricing")}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -87,7 +87,7 @@ const Navigation = () => {
             </motion.button>
             <motion.button 
               onClick={() => scrollToSection("faq")}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors"
               data-testid="nav-faq"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -151,7 +151,7 @@ const Navigation = () => {
             >
               <motion.button 
                 onClick={() => scrollToSection("features")}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-features"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -163,7 +163,7 @@ const Navigation = () => {
               </motion.button>
               <motion.button 
                 onClick={() => scrollToSection("case-studies")}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-case-studies"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -175,7 +175,7 @@ const Navigation = () => {
               </motion.button>
               <motion.button 
                 onClick={() => scrollToSection("pricing")}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-pricing"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -187,7 +187,7 @@ const Navigation = () => {
               </motion.button>
               <motion.button 
                 onClick={() => scrollToSection("faq")}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors"
                 data-testid="mobile-nav-faq"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}

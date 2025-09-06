@@ -78,9 +78,9 @@ const Hero = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center text-primary-foreground">
+        <div className="max-w-4xl mx-auto text-center text-gray-900">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-balance"
+            className="text-4xl md:text-6xl font-bold mb-6 leading-loose text-balance"
             variants={textVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -88,7 +88,7 @@ const Hero = () => {
           >
             中小企業の経理業務を<br />
             <motion.span 
-              className="text-cyan-300 relative inline-block"
+              className="text-blue-600 relative inline-block font-extrabold mt-4"
               variants={scaleIn}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -96,7 +96,7 @@ const Hero = () => {
             >
               完全自動化
               <motion.span 
-                className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-lg blur-sm"
+                className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-lg blur-sm"
                 animate={{ 
                   opacity: [0.3, 0.6, 0.3],
                   scale: [1, 1.05, 1]
@@ -111,7 +111,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl mb-8 opacity-90 text-balance"
+            className="text-xl md:text-2xl mb-8 text-gray-800 text-balance"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -136,10 +136,10 @@ const Hero = () => {
             >
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="group relative bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-400/50"
+                className="group relative bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-8 py-4 rounded-lg font-bold text-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/50"
                 data-testid="hero-trial-cta"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 <div className="relative flex items-center gap-2 z-10">
                   <motion.div
                     variants={iconVariants}
@@ -168,11 +168,11 @@ const Hero = () => {
             >
               <Button
                 onClick={() => scrollToSection("resources")}
-                className="group relative glass-card text-black border border-white/30 px-8 py-4 rounded-lg font-bold text-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-white/20 hover:border-white/60"
+                className="group relative glass-card text-gray-900 border border-gray-300 px-8 py-4 rounded-lg font-bold text-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-gray-400/20 hover:border-gray-400"
                 variant="outline"
                 data-testid="hero-download-cta"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-200/20 to-gray-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 <div className="relative flex items-center gap-2 z-10">
                   <motion.div
                     variants={iconVariants}
@@ -183,9 +183,9 @@ const Hero = () => {
                   </motion.div>
                   資料ダウンロード
                 </div>
-                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                <div className="absolute inset-0 bg-gray-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200/10 to-transparent"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.8 }}
@@ -219,8 +219,8 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-300 transition-colors duration-300">直感的なダッシュボード</h3>
-              <p className="opacity-90 group-hover:opacity-100 transition-opacity duration-300">重要な財務指標を一目で確認</p>
+              <h3 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-cyan-600 transition-colors duration-300">直感的なダッシュボード</h3>
+              <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">重要な財務指標を一目で確認</p>
             </motion.div>
             
             <motion.div 
@@ -241,8 +241,8 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h3 className="font-bold text-lg mb-2 group-hover:text-blue-300 transition-colors duration-300">チーム連携機能</h3>
-              <p className="opacity-90 group-hover:opacity-100 transition-opacity duration-300">複数ユーザーでリアルタイム共有</p>
+              <h3 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">チーム連携機能</h3>
+              <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">複数ユーザーでリアルタイム共有</p>
             </motion.div>
             
             <motion.div 
@@ -263,8 +263,8 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h3 className="font-bold text-lg mb-2 group-hover:text-purple-300 transition-colors duration-300">高度な分析機能</h3>
-              <p className="opacity-90 group-hover:opacity-100 transition-opacity duration-300">AIによる財務分析とレポート</p>
+              <h3 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">高度な分析機能</h3>
+              <p className="text-gray-700 group-hover:text-gray-800 transition-colors duration-300">AIによる財務分析とレポート</p>
             </motion.div>
           </motion.div>
         </div>
