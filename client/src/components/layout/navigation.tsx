@@ -30,7 +30,7 @@ const Navigation = () => {
     <motion.nav 
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-card/95 backdrop-blur-sm border-b border-border shadow-sm" : "bg-transparent"
+        isScrolled || isMobileMenuOpen ? "bg-card/95 backdrop-blur-sm border-b border-border shadow-sm" : "bg-transparent"
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
