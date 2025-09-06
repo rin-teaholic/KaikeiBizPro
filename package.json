@@ -6,7 +6,7 @@
   "license": "MIT",
   "homepage": "https://rin-teaholic.github.io/KaikeiBizPro",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--experimental-loader tsx/esm\" tsx server/index.ts",
+    "dev": "cross-env NODE_ENV=development tsx server/index.ts",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "build:gh-pages": "cross-env NODE_ENV=production vite build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
@@ -16,6 +16,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "20": "^3.1.9",
     "@hookform/resolvers": "^3.10.0",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",
@@ -51,6 +52,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "connect-pg-simple": "^10.0.0",
+    "cross-env": "^7.0.3",
     "date-fns": "^3.6.0",
     "drizzle-orm": "^0.39.1",
     "drizzle-zod": "^0.7.0",
@@ -61,6 +63,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.453.0",
     "memorystore": "^1.6.7",
+    "nanoid": "^3.3.7",
     "next-themes": "^0.4.6",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
@@ -78,8 +81,7 @@
     "wouter": "^3.3.5",
     "ws": "^8.18.0",
     "zod": "^3.24.2",
-    "zod-validation-error": "^3.4.0",
-    "cross-env": "^10.0.0"
+    "zod-validation-error": "^2.1.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
@@ -96,7 +98,7 @@
     "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.30.4",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.19.12",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.34.0",
@@ -104,9 +106,9 @@
     "postcss": "^8.4.47",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.17",
-    "tsx": "^4.19.1",
+    "tsx": "^3.12.7",
     "typescript": "5.6.3",
-    "vite": "^5.4.19"
+    "vite": "^4.5.3"
   },
   "engines": {
     "node": ">=16.0.0",

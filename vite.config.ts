@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
+  base: process.env.GITHUB_PAGES ? 'KaikeiBizPro' : './',
   define: {
     global: 'globalThis',
   },
