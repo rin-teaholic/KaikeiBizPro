@@ -80,6 +80,15 @@
         <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
         <p><strong>プラットフォーム:</strong> <span id="platform"></span></p>
         <p><strong>ブラウザ:</strong> <span id="browser"></span></p>
+        <p><strong>PWA対応:</strong> <span id="pwaSupport"></span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Web App Manifest</h2>
+        <div class="icon-test">
+            <span class="status info" id="manifestStatus">manifest.json読み込み中...</span>
+        </div>
+        <div id="manifestInfo" style="margin-top: 10px;"></div>
     </div>
 
     <div class="test-section">
@@ -116,6 +125,31 @@
                 this.nextElementSibling.textContent = '✅ 読み込み成功';
             };
         });
+        
+        // PWA対応確認
+        const pwaSupport = 'serviceWorker' in navigator ? '✅ 対応' : '❌ 非対応';
+        document.getElementById('pwaSupport').textContent = pwaSupport;
+        
+        // manifest.json読み込み確認
+        fetch('/manifest.json')
+            .then(response => response.json())
+            .then(manifest => {
+                document.getElementById('manifestStatus').className = 'status success';
+                document.getElementById('manifestStatus').textContent = '✅ manifest.json読み込み成功';
+                
+                const manifestInfo = document.getElementById('manifestInfo');
+                manifestInfo.innerHTML = `
+                    <p><strong>アプリ名:</strong> ${manifest.name}</p>
+                    <p><strong>短縮名:</strong> ${manifest.short_name}</p>
+                    <p><strong>テーマカラー:</strong> ${manifest.theme_color}</p>
+                    <p><strong>アイコン数:</strong> ${manifest.icons.length}個</p>
+                `;
+            })
+            .catch(error => {
+                document.getElementById('manifestStatus').className = 'status error';
+                document.getElementById('manifestStatus').textContent = '❌ manifest.json読み込み失敗';
+                console.error('manifest.json読み込みエラー:', error);
+            });
     </script>
 </body>
 </html>
